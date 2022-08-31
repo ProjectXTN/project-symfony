@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Hello DetailsController!
+{% endblock %}
+
+{% block body %}
+    <style>	
+		button:hover{background-color:black; color:white;}
+	</style>
+
+    <div class="example-wrapper">
+        <h1 class="text-center m-5">
+            Hello you are a Page Details        
+        </h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="d-flex justify-content-center align-items-center">
+                <table class="text-center border border-2">
+                    {% for article in articles %}
+                        <tr class="border border-2">
+                            <td class="p-3">
+                                Article                             
+                            </td>
+                            <td class="border border-2 p-3">
+                                {{ article.name }}
+                            </td>
+                            <td class="border border-2 p-3">
+                                {{ article.price }}
+                            </td>
+                            <td class="border border-2 p-3">
+                                {{ article.type }}
+                            </td>
+                            <td>
+                                <a class="p-2" href="{{ path('app_details_delete', {'id':article.id}) }}">
+                                    <button>
+                                        Supprimer                                     
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div class="container text-center m-1">
+        <a href="{{ path('app_details_form') }}">
+            <button>
+                Ajouter Article          
+            </button>
+        </a>
+    </div>
+
+{% endblock %}
