@@ -39,6 +39,15 @@ class ArticlesRepository extends ServiceEntityRepository
         }
     }
 
+    public function getLastArticle(){
+        //creation d'une requette complexe grace au query builder
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Articles[] Returns an array of Articles objects
 //     */
