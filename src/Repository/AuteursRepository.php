@@ -39,6 +39,15 @@ class AuteursRepository extends ServiceEntityRepository
         }
     }
 
+    public function getLastAuteur(){
+        //creation d'une requette complexe grace au query builder
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Auteurs[] Returns an array of Auteurs objects
 //     */
